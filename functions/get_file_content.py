@@ -7,9 +7,9 @@ def get_file_content(working_directory, file_path):
         working_path = os.path.abspath(working_directory)
         file_path_full = os.path.join(working_path, file_path)
         if not file_path_full.startswith(working_path):
-            f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
+            return f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
         if not os.path.isfile(file_path_full):
-            f'Error: File not found or is not a regular file: "{file_path}"'
+            return f'Error: File not found or is not a regular file: "{file_path}"'
         with open(file_path_full, "r") as f:
             file_content_string = f.read(MAX_CHARS)
         if os.path.getsize(file_path_full) > 10000:
