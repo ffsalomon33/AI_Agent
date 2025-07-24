@@ -5,7 +5,7 @@ from .config import MAX_CHARS
 def get_file_content(working_directory, file_path):
     try:
         working_path = os.path.abspath(working_directory)
-        file_path_full = os.path.join(working_path, file_path)
+        file_path_full = os.path.abspath(os.path.join(working_path, file_path))
         if not file_path_full.startswith(working_path):
             return f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
         if not os.path.isfile(file_path_full):
